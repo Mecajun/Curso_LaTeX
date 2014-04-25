@@ -19,7 +19,7 @@ ALL: $(NAME).pdf
 # Compile and open pdf
 $(NAME).pdf: $(NAME).tex
 	$(CC) $(CCFLAGS) $< &&	$(CC) $< && $(CC) $< &&\
-	mv $(@) ../$(@)&
+	mv $(@) ../$(@)&&\
 	xdg-open ../$(@)&
 
 # Remove generated files
