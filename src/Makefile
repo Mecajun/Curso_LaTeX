@@ -1,7 +1,7 @@
 ##
 # Makefile for Latex
 # @author Rafael Lima
-# @version 1.32
+# @version 1.33
 ##
 
 # Compiler Options
@@ -25,8 +25,8 @@ $(NAME).pdf: $(NAME).tex
 # Remove generated files
 .PHONY = clean
 clean:
-	rm -f $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).idx $(NAME).out\
-	$(NAME).nav $(NAME).snm $(NAME).toc $(NAME).vrb
+	rm -f *.aux $(NAME).bbl $(NAME).blg $(NAME).log $(NAME).idx $(NAME).out \
+	$(NAME).nav $(NAME).snm $(NAME).toc $(NAME).vrb $(NAME).nav
 
 .PHONY = clean-all
 clean-all: clean

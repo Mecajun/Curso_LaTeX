@@ -1,5 +1,76 @@
 %%% AULA 2
-\section{Aula 2}
+\begin{frame}{Itens, enumerados e descrições}
+\begin{LaTeXcode}[Exemplo de itens com marcador]
+\LCmdArg{begin}{itemize} \n
+\LCmd{item} Primeiro item; \n
+\LCmdArg{begin}{itemize} \n
+\LCmd{item} Sub-item; \n
+\LCmd{item Outro} sub-item; \n
+\LCmdArg{end}{itemize} \n
+\LCmd{item} Último item. \n
+\LCmdArg{end}{itemize}
+\end{LaTeXcode}
+
+Produz:
+\begin{LaTeXoutput}
+\begin{itemize}
+\item Primeiro item;
+\begin{itemize}
+\item Sub-item;
+\item Outro sub-item;
+\end{itemize}
+\item Último item.
+\end{itemize}
+\end{LaTeXoutput}
+\end{frame}
+
+\begin{frame}{Itens, enumerados e descrições}
+\begin{LaTeXcode}[Exemplo com numeração]
+\LCmdArg{begin}{enumerate} \n
+\LCmd{item} Primeiro; \n
+\LCmd{item} Segundo; \n
+\LCmdArg{begin}{enumerate} \n
+\LCmd{item} Sub-item; \n
+\LCmd{item} Sub-item. \n
+\LCmdArg{end}{enumerate} \n
+\LCmdArg{end}{enumerate}
+\end{LaTeXcode}
+
+Produz:
+\begin{LaTeXoutput}
+\begin{enumerate}
+\item Primeiro;
+\item Segundo;
+\begin{enumerate}
+\item Sub-item;
+\item Sub-item.
+\end{enumerate}
+\end{enumerate}
+\end{LaTeXoutput}
+\end{frame}
+
+\begin{frame}{Itens, enumerados e descrições}
+\begin{LaTeXcode}[Exemplo de descrição]
+\LCmdArg{begin}{description} \n
+\LCmd{item} [Windows] Espécie de virus de computador
+(costuma ser notado ao gerar a mensagem
+`{}`Falha Geral de Proteção'{}'); \n
+\LCmd{item} [MacOS] Sistema operacional da Apple; \n
+\LCmd{item} [Linux] Sistema operacional livre. \n
+\LCmdArg{end}{description}
+\end{LaTeXcode}
+
+Produz:
+
+\begin{LaTeXoutput}
+\begin{description}
+\item [Windows] Sistema operacional da Microsoft;
+\item [MacOS] Sistema operacional da Apple;
+\item [Linux] Sistema operacional livre.
+\end{description}
+\end{LaTeXoutput}
+\end{frame}
+
 \begin{frame}{Construido Tabelas}
 O ambiente \Lenv{tabular} é usado para definir tabelas em modo texto (que não contenham nenhuma ou pouca matemática).
 
@@ -185,80 +256,6 @@ Em vertigiros persondavam as verdentes; \\
 Trisciturnos calavam-se os gaiolouvos \\
 E os porverdidos estriguilavam fientes.
 \end{verse}
-\end{LaTeXoutput}
-\end{frame}
-
-\begin{frame}{Itens, enumerados e descrições}
-\begin{LaTeXcode}[Exemplo de itens com marcador]
-\LCmdArg{begin}{itemize} \n
-\LCmd{item} Primeiro item; \n
-\LCmdArg{begin}{itemize} \n
-\LCmd{item} Sub-item; \n
-\LCmd{item Outro} sub-item; \n
-\LCmdArg{end}{itemize} \n
-\LCmd{item} Último item. \n
-\LCmdArg{end}{itemize}
-\end{LaTeXcode}
-
-Produz:
-\begin{LaTeXoutput}
-\begin{itemize}
-\item Primeiro item;
-\begin{itemize}
-\item Sub-item;
-\item Outro sub-item;
-\end{itemize}
-\item Último item.
-\end{itemize}
-\end{LaTeXoutput}
-\end{frame}
-
-\begin{frame}{Itens, enumerados e descrições}
-\begin{LaTeXcode}[Exemplo com numeração]
-\LCmdArg{begin}{enumerate} \n
-\LCmd{item} Primeiro; \n
-\LCmd{item} Segundo; \n
-\LCmdArg{begin}{enumerate} \n
-\LCmd{item} Sub-item; \n
-\LCmd{item} Sub-item. \n
-\LCmdArg{end}{enumerate} \n
-\LCmdArg{end}{enumerate}
-\end{LaTeXcode}
-
-Produz:
-\begin{LaTeXoutput}
-\begin{enumerate}
-\item Primeiro;
-\item Segundo;
-\begin{enumerate}
-\item Sub-item;
-\item Sub-item.
-\end{enumerate}
-\end{enumerate}
-\end{LaTeXoutput}
-\end{frame}
-
-\begin{frame}{Itens, enumerados e descrições}
-\begin{LaTeXcode}[Exemplo de descrição]
-\LCmdArg{begin}{description} \n
-\LCmd{item} [Windows] Espécie de virus de computador
-(costuma ser notado ao gerar a mensagem
-`{}`Falha Geral de Proteção'{}'); \n
-\LCmd{item} [MacOS] Sistema operacional da Apple; \n
-\LCmd{item} [Linux] Sistema operacional livre. \n
-\LCmdArg{end}{description}
-\end{LaTeXcode}
-
-Produz:
-
-\begin{LaTeXoutput}
-\begin{description}
-\item [Windows] Espécie de virus de computador
-(costuma ser notado ao gerar a mensagem
-``Falha Geral de Proteção'');
-\item [MacOS] Sistema operacional da Apple;
-\item [Linux] Sistema operacional livre.
-\end{description}
 \end{LaTeXoutput}
 \end{frame}
 
