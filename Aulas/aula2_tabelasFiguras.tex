@@ -333,6 +333,38 @@ A Tabela~\ref{tab:semsentido} apresenta \ldots
 \end{LaTeXoutput}
 \end{frame}
 
+\begin{frame}{Importando imagens}
+O programa compilador \prog{pdftex}, usado nas atuais versões de \LaTeX{}, pode importar imagens nos formatos: JPG, PNG, PDF, MPS e EPS.
+
+\begin{itemize}
+\item \LCmdArg{usepackage}{graphicx};
+\item \LOA includegraphics[especificação]{nome do arquivo sem extensão};
+\item[] Especificação:
+\begin{description}
+\item [width] largura;
+\item [height] altura;
+\item [angle] rotaciona a figura;
+\end{description}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Importando imagens}
+\begin{LaTeXcode}[Exemplo]
+\LCmdArg{documentclass}{article}\n
+...\n
+\LCmdArg{usepackage}{graphicx}\n
+\LCmdArg{begin}{document}\n
+...\n
+\LCmdArg{begin}{figure}\LOpt{!tp}\n
+\LCmd{centering}\n
+\LOA includegraphics[width=0.6\LCmd{textwidth}]{grafo}\n
+\LCmdArg{caption}{\dots}\LCmdArg{label}{chave}\n
+\LCmdArg{end}{figure}\n
+...\n
+\LCmdArg{end}{document}
+\end{LaTeXcode}
+\end{frame}
+
 \begin{frame}{Produzindo sumários}
 Estes podem ser obtidos pelos comandos: 
 \begin{itemize}
@@ -420,3 +452,4 @@ cmyk & \LCmdArg{definecolor}{orange}\Larg{cmyk}\Larg{0,0.5,1.0}\\
 \item [Modo matemático] Para produzir fórmulas matemáticas; Obtido usando-se \texttt{\bs(\dots\bs)}, \texttt{\$\dots\$}, \LCmdArg{begin}{displaymath}\dots\LCmdArg{end}{displaymath}, \texttt{\bs\ls\dots\bs\rs}, \LCmdArg{begin}{equation}\dots \LCmdArg{end}{equation} e \LCmdArg{begin}{eqnarray}\dots \LCmdArg{end}{eqnarray}.
 \end{description}
 \end{frame}
+
