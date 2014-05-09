@@ -52,9 +52,7 @@ Produz:
 \begin{frame}{Itens, enumerados e descrições}
 \begin{LaTeXcode}[Exemplo de descrição]
 \LCmdArg{begin}{description} \n
-\LCmd{item} [Windows] Espécie de virus de computador
-(costuma ser notado ao gerar a mensagem
-`{}`Falha Geral de Proteção'{}'); \n
+\LCmd{item} [Windows] Sistema operacional da Microsoft; \n
 \LCmd{item} [MacOS] Sistema operacional da Apple; \n
 \LCmd{item} [Linux] Sistema operacional livre. \n
 \LCmdArg{end}{description}
@@ -203,20 +201,18 @@ A equação~(\ref{eqn:integral}) define \dots
 
 \begin{frame}{Citações e versos}
 \begin{LaTeXcode}[Exemplo]
-Exclamou Alice enquanto avançava com cuidado
-pelo bosque:\n
+Bilbo costumava dizer:\n
 \LCmdArg{begin}{quote}\n
-Foi o chá mais idiota de que participei em
-toda a minha vida!\n
+É perigoso sair porta afora, Frodo. Você pisa na Estrada, e, se não controlar seus pés, não há como saber até onde você pode ser levado \ldots\n
 \LCmdArg{end}{quote}
 \end{LaTeXcode}
 
 Produz:
 
 \begin{LaTeXoutput}
-"É perigoso sair porta afora, Frodo", ele costumava dizer, "
+Bilbo costumava dizer:
 \begin{quote}\normalfont
-Você pisa na Estrada, e, se não controlar seus pés, não há como saber até onde você pode ser levado \ldots
+É perigoso sair porta afora, Frodo. Você pisa na Estrada, e, se não controlar seus pés, não há como saber até onde você pode ser levado \ldots
 \end{quote}
 \end{LaTeXoutput}
 \end{frame}
@@ -365,6 +361,58 @@ São produzidos os arquivos .TOC, .LOF e .LOT. Posteriormente eles podem ser edi
 \end{block}
 \end{frame}
 
+\begin{frame}{Cores}
+Para usar cores é necessário o uso de alguns pacotes adicionais:
+\begin{LaTeXcode}
+\LCmdArg{usepackage}{color}\n
+ou\n
+\LCmdOptArg{usepackage}{usenames,dvipsnames,svgnames,table}{xcolor}
+\end{LaTeXcode}
+
+Assim podemos definir algumas cores básicas como \textcolor{blue}{azul},\textcolor{green}{verde} ou até mesmo \textcolor{pink}{Rosa} para os elementos do \LaTeX
+
+\end{frame}
+
+\begin{frame}{Cores}
+Assim como muitos comandos, podemos indicar as cores de duas formas básicas:
+
+\begin{LaTeXcode}
+\LCmdArg{textcolor}{nome-cor}\Larg{algum texto}\n ou\n \Larg{\LCmdArg{color}{nome-cor} algum texto}.
+\end{LaTeXcode}
+
+Caso não tenha a cor exata definida pode-se ainda definir uma cor personalizada usando o comando \footnote{Mais detalhes em \url{http://www.las.ic.unicamp.br/pub/ctan/macros/latex/contrib/xcolor/xcolor.pdf}}:
+\begin{LaTeXcode}
+\LCmdArg{definecolor}{''name''}\Larg{''model''}\Larg{''color-spec''}
+\end{LaTeXcode}
+\end{frame}
+
+\begin{frame}{Modelos de Cores}
+\begin{block}{}
+\begin{tabular}{cp{3cm}cl}
+\textbf{Modelo} & \textbf{Descrição} & Variação Paramentro\\
+\hline
+gray & Tons de cinza & 0-1 \\
+RGB & Vermelho, Verde, Azul & 0-255 \\
+HTML & Vermelho, Verde, Azul & 00-FF \\
+cmyk & Ciano, Magenta, Amarelo e Preto & 0-1 \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Modelos de Cores}
+\begin{block}{}
+\begin{tabular}{cl}
+\textbf{Modelo} & \textbf{Exemplo}\\
+\hline
+gray & \LCmdArg{definecolor}{light-gray}\Larg{gray}\Larg{0.95}\\
+rgb & \LCmdArg{definecolor}{orange}\Larg{rgb}\Larg{1,0.5,0}\\
+RGB & \LCmdArg{definecolor}{orange}\Larg{rgb}\Larg{255,127,0}\\
+HTML & \LCmdArg{definecolor}{orange}\Larg{rgb}\Larg{FF7F00}\\
+cmyk & \LCmdArg{definecolor}{orange}\Larg{cmyk}\Larg{0,0.5,1.0}\\
+\end{tabular}
+\end{block}
+\end{frame}
+
 \begin{frame}{Modos do \TeX}
 \begin{description}
 \item [Modo parágrafo] Divide texto em linhas, parágrafos e páginas; é o modo normal do \TeX;
@@ -372,7 +420,3 @@ São produzidos os arquivos .TOC, .LOF e .LOT. Posteriormente eles podem ser edi
 \item [Modo matemático] Para produzir fórmulas matemáticas; Obtido usando-se \texttt{\bs(\dots\bs)}, \texttt{\$\dots\$}, \LCmdArg{begin}{displaymath}\dots\LCmdArg{end}{displaymath}, \texttt{\bs\ls\dots\bs\rs}, \LCmdArg{begin}{equation}\dots \LCmdArg{end}{equation} e \LCmdArg{begin}{eqnarray}\dots \LCmdArg{end}{eqnarray}.
 \end{description}
 \end{frame}
-
-\begin{frame}{Colocando Cores}
-\end{frame}
-
