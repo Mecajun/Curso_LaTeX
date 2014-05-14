@@ -1,4 +1,80 @@
 %% Aula 4 - Macros e pacotes especiais
+\begin{frame}{Comandos \LCmd{newcommand} e \LCmd{newtheorem}}
+\begin{itemize}
+\item O comando \LCmd{newcommand} é usado para definir novos comandos (macros);
+\item Sua sintaxe é:
+\begin{LaTeXcode}[\LCmd{newcommand}]
+\LNCOA{newcommand}{cmd}[args]{definição}\n
+ou\n
+\LNCOA{newcommand}{cmd}{definição}
+\end{LaTeXcode}
+\item No primeiro argumento fica o nome do novo comando, o argumento opcional é o número de argumentos do novo comando (numerados a partir de 1) e referenciados com ``\#'' na definição;
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\LCmd{newcommand}}
+\begin{LaTeXcode}[Exemplo]
+\LNCOA{newcommand}{titulo}[1]{\lb\string\Large \string\textbf\{\#1\}\rb}\n
+
+\LCmdArg{titulo}{Meu título} 
+\end{LaTeXcode}
+Produz:
+\begin{LaTeXoutput}
+\titulo{Meu título}
+\end{LaTeXoutput}
+\end{frame}
+
+\begin{frame}{\LCmd{newtheorem}}
+O comando \LCmd{newtheorem} permite definir teoremas, definições, exemplos, etc.
+
+\begin{LaTeXcode}[Exemplo]
+\string\newtheorem\{exe\}\{Exemplo\}\n
+...\n
+\LCmdArg{begin}{exe}\n
+Este é um exemplo.\n
+\LCmdArg{end}{exe}
+\end{LaTeXcode}
+Produz:
+\begin{LaTeXoutput}
+\textbf{Exemplo 1} \textit{Este é um exemplo.}
+\end{LaTeXoutput}
+\end{frame}
+
+\begin{frame}{Comando \LCmd{newenvironment}}
+O comando \LCmd{newenvironment} permite criar novos ambientes, permitindo personalizar uma região aonde terão comandos executados antes e depois.
+\LNCOA{newenvironment}{nomeAmbiente}[numArgumentos]{Comandos Antes}\Larg{Comandos Depois}
+
+\end{frame}
+
+\begin{frame}{Comando \LCmd{newenvironment}}
+
+\begin{LaTeXcode}[Exemplo]
+\LCmdArg{newenvironment}{minhaTabela}
+\{ \% Comandos executados Antes
+\LCmdArg{begin}{table}\n
+\LCmd{centering}\n
+\LCmdArg{begin}{tabular}\Larg{c r @\{,\} l}\n
+Expressão \& \LCmd{multicolumn}\Larg{2}\Larg{c}\Larg{Valor} \string\\ \string\hline\n
+\}\n
+\{\% Comandos executados depois\n
+\LCmdArg{end}{tabular}\n
+\LCmdArg{end}{table}\n
+\}
+\end{LaTeXcode}
+
+\end{frame}
+
+\begin{frame}{Comando \LCmd{newenvironment}}
+\begin{LaTeXcode}[Uso do novo Ambiente]
+  \LCmdArg{begin}{minhaTabela}\n
+\$\string\pi\$ \& 3 \& 1415 \string\\ \n
+\$\string\pi\string^2\$ \& 9 \& 869 \string\\ \n
+\$\string\pi\string^3\$ \& 31 \& 0062 \n
+  \LCmdArg{end}{minhaTabela}
+\end{LaTeXcode}
+\end{frame}
+
+
 
 \begin{frame}{Produzindo verbatim}
 Use o ambiente \Lenv{verbatim} ou o comando \LCmd{verb}. O argumento de \LCmd{verb} deve ser delimitado por dois caracteres como \texttt{+} ou \texttt{=}, escolha do usuário; o caracter não deve ser presente na(s) palavra(s) a ser(em) reproduzida(s) verbatim (literalmente). 
@@ -42,23 +118,39 @@ int f91(int n){
 \end{block}
 \end{frame}
 
-% \begin{frame}{Contadores}
-% Contadores são uma parte essencial do \LaTeX . Representando o mecanismo principal para numeração de todos os elementos (Listas, legendas, capítulos,...). Para criar um contador novo basta usar o comando:
-% \begin{LaTeXcode}
-% \LCmdArg{newcounter}{nome-do-contador}
-% \end{LaTeXcode}
-% Ou ainda pode-se relacionar contadores de maneira que um contador seja zerado toda vez que um outro for incrementado.
-% \begin{LaTeXcode}
-% \LCmdOptArg{newcounter}{nome-do-contador}
-% \end{LaTeXcode}
-% \end{frame}
+\begin{frame}{Contadores}
+Contadores são uma parte essencial do \LaTeX . Representando o mecanismo principal para numeração de todos os elementos (Listas, legendas, capítulos,...). Para criar um contador novo basta usar o comando:
+\begin{LaTeXcode}
+\LCmdArg{newcounter}{nome-do-contador}
+\end{LaTeXcode}
+Ou ainda pode-se relacionar contadores de maneira que um contador seja zerado toda vez que um outro for incrementado.
+\begin{LaTeXcode}
+\LCmdArg{newcounter}{nome-do-contador}\Larg{outro-contador}
+\end{LaTeXcode}
+\end{frame}
 
-% \begin{frame}{Contadores}
-% \begin{tabular}{ll}
-% & Criando Contadores \\
-% & Incrementando Contadores\\
-% \end{tabular}
-% \end{frame}
+\begin{frame}{Contadores}
+\begin{block}{}
+\begin{tabular}{lp{4cm}}
+  \LCmdArg{stepcounter}{NomeContador}& Incrementa um\\
+  \LCmdArg{refstepcounter}{NomeContador}& Incrementa um e mostra o valor \\
+  \LCmdArg{addtocounter}{NomeContador}\Larg{num}& Incrementa valor em $num$ \\
+  \LCmdArg{setcounter}{NomeContador}\Larg{num}& Mudar o valor para $num$ \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Contadores}
+\begin{tabular}{ll}
+  Comando & Exemplo\\
+  \hline
+  \LCmd{arabic}  & 1,2,3\\
+  \LCmd{alph}  & a,b,c\\
+  \LCmd{Alph}  & A,B,C\\
+  \LCmd{roman}  & i,ii,iii\\
+  \LCmd{Roman}  & I,II,III\\
+\end{tabular}
+\end{frame}
 
 \begin{frame}{Definindo o layout da página}
 \begin{itemize}
