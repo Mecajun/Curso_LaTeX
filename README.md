@@ -1,4 +1,4 @@
-Curso LaTeX
+![Curso LaTeX](http://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/220px-LaTeX_logo.svg.png)
 ===========
 
 Materiais e Exemplos Referente ao [Curso de LaTeX](http://www.mecajun.com.br/latex.html)
