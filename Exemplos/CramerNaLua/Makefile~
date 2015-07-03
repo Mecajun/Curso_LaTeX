@@ -6,7 +6,7 @@
 
 # Compiler Options
 CC = lualatex
-CCFLAGS = --enable-write18
+CCFLAGS = --shell-scape --enable-write18
 
 NAME = CramerNaLua
 
