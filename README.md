@@ -9,4 +9,4 @@ Materiais e Exemplos Referente ao [Curso de LaTeX](http://www.mecajun.com.br/lat
 
 ### Exemplos:
 * [Receita - Tabelas, Lista e Figuras](https://github.com/Mecajun/Curso_LaTeX/blob/master/Exemplos/ReceitaOmelete/receitaOmelete.pdf?raw=true)
-* [Crammer Na Lua - Lualatex, Pygment e Cálculos Matemáticos](https://github.com/Mecajun/Curso_LaTeX/blob/master/Exemplos/CramerNaLua/CramerNaLua.pdf?raw=true)
+* [Crammer Na Lua - Lualatex e Cálculos Matemáticos](https://github.com/Mecajun/Curso_LaTeX/blob/master/Exemplos/CramerNaLua/CramerNaLua.pdf?raw=true)
