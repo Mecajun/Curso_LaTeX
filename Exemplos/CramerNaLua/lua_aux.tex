@@ -1,0 +1,68 @@
+% use lualatex to compile
+ 
+%% \luaTable{'numberOfColumns'}{'dataFile.dat'}{'legend'}
+%% {'First Line of table (title)'}
+ 
+\usepackage{luacode} %% Package to use the enviroment luacode
+ 
+\begin{luacode}
+numC = 2
+ 
+function readfileDat(filename)
+    local filename = "./data/"..filename
+ 
+    for line in io.lines(filename) do
+        local numl = {}
+        for n in string.gmatch(line,"[\%d\%.]+") do
+            numl[#numl+1] = tostring(n)
+        end
+
+        numC = #numl
+        tex.sprint(table.concat(numl," & "),"\\\\")
+    end
+end
+ 
+function readfileDat0(filename)
+    local tableData = {}
+    tableData,numC = readfileDat0(filename)
+    tex.sprint(table.concat(tableData,"\\\\"))
+end
+ 
+\end{luacode}
+ 
+\newcommand{\luaTable}[5][\directlua{tex.print(numC)}]
+{
+\begin{table}[H]
+\centering
+\label{#5}
+\caption{#3}
+\begin{tabular}{*{#1}{c}}
+\hline
+#4\\
+\hline
+\directlua{readfileDat('#2')}
+\hline
+\end{tabular}
+\end{table}
+}
+ 
+% Sample:
+% \luaTable[3]{teste.dat}{legenda}{x&y&z}
+ 
+% -----------------------------------------------------------------
+ 
+\newcounter{cGraph}
+\setcounter{cGraph}{1}
+\newcommand{\plotedFigure}[2][\thecGraph]{
+\begin{figure}[H]
+\centering
+\label{fig:g#1}
+\includegraphics[width=10cm]{../image/graph#1.png}
+\caption{#2}
+\end{figure}
+\stepcounter{cGraph}
+}
+ 
+% Sample:
+% \plotedFigure{numberOfGraph}{'legend'}
+% -----------------------------------------------------------------

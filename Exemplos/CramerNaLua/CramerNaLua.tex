@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usepackage[brazilian]{babel}
+
+\input{lua_aux.tex}
+
+\title{Dummie-Lua}
+\author{Rafael Lima}
+\date{February 2014}
+
+\begin{document}
+
+\usemintedstyle{tango}
+
+\maketitle
+
+\section{Gerando uma tabela a partir de um arquivo de texto}
+\begin{minted}{lua}
+numC = 2
+ 
+function readfileDat(filename)
+    local filename = "./data/"..filename
+ 
+    for line in io.lines(filename) do
+        local numl = {}
+        for n in string.gmatch(line,"[\%d\%.]+") do
+            numl[#numl+1] = tostring(n)
+        end
+
+        numC = #numl
+        tex.sprint(table.concat(numl," & "),"\\\\")
+    end
+end
+\end{minted}
+
+
+\luaTable[2]{table1.dat}{legenda}{x&y}{}
+
+\section{Metodo de Crammer}
+
+\newcommand{\printLua}[1]{\directlua{tex.print(#1)}}
+
+\begin{luacode}
+-- Definindo faixa de valores:
+bias = 20
+range = 50 
+
+-- Escrevendo uma mensagem:
+tex.sprint("Gerando um sistema linear com valores inteiros aleatorios entre ",
+   -bias," e ",range-bias,":")
+
+-- Gerando os valores aleatorios:
+a11 = math.floor(math.random()*range - bias)
+a12 = math.floor(math.random()*range - bias)
+a21 = math.floor(math.random()*range - bias)
+a22 = math.floor(math.random()*range - bias)
+
+b1 = math.floor(math.random()*range - bias)
+b2 = math.floor(math.random()*range - bias)
+
+-- Calculando o valor de X e Y no sistema:
+D = a11*a22-a12*a21
+Dx = b1*a22-b2*a21
+Dy = a11*b1-a12*b2
+
+y=Dy/D
+x=Dx/D
+
+-- tex.sprint("$$\\begin{array}{l}x = ",x,"\\\\y = ",y,"\\end{array}$$")
+\end{luacode}
+
+\begin{equation}
+\left\{
+\begin{array}{l}
+\printLua{a11}\cdot x + \printLua{a12} \cdot y = \printLua{b1}\\
+\printLua{a21}\cdot x + \printLua{a22} \cdot y = \printLua{b2}\\
+\end{array}
+\right.
+\end{equation}
+
+\begin{luacode}
+tex.sprint("$$\\begin{array}{l}x = ",x,"\\\\y = ",y,"\\end{array}$$")
+\end{luacode}
+
+\paragraph{}Código Usado
+
+\begin{minted}{lua}
+-- Definindo faixa de valores:
+bias = 20
+range = 50 
+
+-- Escrevendo uma mensagem:
+tex.sprint("Gerando um sistema linear com valores inteiros aleatorios entre ",
+    -bias," e ",range-bias,":")
+
+-- Gerando os valores aleatorios:
+a11 = math.floor(math.random()*range - bias)
+a12 = math.floor(math.random()*range - bias)
+a21 = math.floor(math.random()*range - bias)
+a22 = math.floor(math.random()*range - bias)
+
+b1 = math.floor(math.random()*range - bias)
+b2 = math.floor(math.random()*range - bias)
+
+-- Calculando o valor de X e Y no sistema:
+D = a11*a22-a12*a21
+Dx = b1*a22-b2*a21
+Dy = a11*b1-a12*b2
+
+y=Dy/D
+x=Dx/D
+\end{minted}
+
+
+
+\end{document}
